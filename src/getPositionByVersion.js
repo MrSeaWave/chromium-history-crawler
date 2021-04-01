@@ -280,12 +280,12 @@ async function doIt(beginVerIndex) {
       console.log(`success count : ${successCount}`);
 
       // sort keys
-      allVerPosMap = Object.entries(allVerPosMap).sort((a, b) =>
-        collator.compare(b, a).reduce((o, [v, p]) => {
+      allVerPosMap = Object.entries(allVerPosMap)
+        .sort((a, b) => collator.compare(b, a))
+        .reduce((o, [v, p]) => {
           o[v] = p;
           return o;
-        }, {})
-      );
+        }, {});
       fs.writeFileSync(
         path.join(dir.base, fileName.versionPosition),
         JSON.stringify(allVerPosMap, null, 2)
