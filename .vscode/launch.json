@@ -11,6 +11,14 @@
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/getPositionByVersion.js",
       "args": ["-m", "inc"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch tem",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/tem.js",
+      "args": ["-m", "inc"]
     }
   ]
 }

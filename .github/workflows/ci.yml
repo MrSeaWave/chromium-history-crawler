@@ -1,0 +1,24 @@
+name: 'run all'
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  crawler:
+    name: 'crawler'
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@main
+      - name: install
+        run: npm install
+      - name: 'get position by version'
+        run: 'node ./src/getPositionByVersion.js -m all'
+      - name: commit version-position.json file
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: json/version-position.json
+          commit_message: 'feat: update JSON file'
+          commit_user_name: MrSeaWave
+          commit_user_email: MrDaemon@outlook.com
