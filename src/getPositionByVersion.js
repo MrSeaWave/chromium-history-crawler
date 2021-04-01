@@ -5,7 +5,13 @@ const cheerio = require('cheerio');
 const got = require('got');
 const Crawler = require('crawler');
 
-const { dir, versionUrl, versionRegex, fileName } = require('./constants');
+const {
+  dir,
+  versionUrl,
+  versionRegex,
+  fileName,
+  versionPositionUrl,
+} = require('./constants');
 
 const modes = {
   inc: 'inc',
