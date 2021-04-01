@@ -291,8 +291,8 @@ async function doIt(beginVerIndex) {
         JSON.stringify(allVerPosMap, null, 2)
       );
 
-      const fileName = __filename.slice(__dirname.length + 1);
-      console.log(`${fileName} : finish`);
+      const fName = __filename.slice(__dirname.length + 1);
+      console.log(`${fName} : finish`);
 
       resolve(successCount === needToFetchCount);
     });
