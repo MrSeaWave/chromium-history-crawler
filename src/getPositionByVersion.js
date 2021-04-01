@@ -1,8 +1,8 @@
 const { getopt } = require('stdio');
 const fs = require('fs');
+const path = require('path');
 const cheerio = require('cheerio');
 const got = require('got');
-const path = require('path');
 const Crawler = require('crawler');
 
 const { dir, versionUrl, versionRegex, fileName } = require('./constants');
@@ -235,10 +235,10 @@ async function doIt(beginVerIndex) {
     },
   });
 
-  const oldVerPosStr = fs.readFileSync(
-    path.join(dir.base, fileName.versionPosition),
-    'utf8'
-  );
+  const verPosPath = path.join(dir.base, fileName.versionPosition);
+  const oldVerPosStr = fs.existsSync(verPosPath)
+    ? fs.readFileSync(verPosPath, 'utf8')
+    : '{}';
   const oldVerPosMap = JSON.parse(oldVerPosStr);
   versions = versions.filter((v) => !oldVerPosMap.hasOwnProperty(v));
 
