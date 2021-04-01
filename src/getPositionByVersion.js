@@ -84,7 +84,7 @@ opts = {
   ...opts,
 };
 
-console.log('opts', opts, receivedOpts);
+console.log('opts: ', opts);
 
 // 运行入口
 main();

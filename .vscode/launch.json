@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch getPositionByVersion",
+      "name": "run getPositionByVersion",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/getPositionByVersion.js",
       "args": ["-m", "inc"]
@@ -15,10 +15,24 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch tem",
+      "name": "run tem",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/tem.js",
       "args": ["-m", "inc"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "run getPositionWithOsList.js",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/getPositionWithOsList.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "run os-ver-pos-generator",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/verPosOsGen.js"
     }
   ]
 }
