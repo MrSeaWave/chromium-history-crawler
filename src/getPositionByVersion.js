@@ -2,6 +2,7 @@ const { getopt } = require('stdio');
 const fs = require('fs');
 const cheerio = require('cheerio');
 const got = require('got');
+const path = require('path');
 const Crawler = require('crawler');
 
 const { dir, versionUrl, versionRegex, fileName } = require('./constants');
