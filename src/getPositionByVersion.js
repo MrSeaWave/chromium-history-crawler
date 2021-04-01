@@ -59,26 +59,40 @@ const receivedOpts = getopt({
   },
 });
 
-let opts =
-  receivedOpts.mode === modes.all
-    ? { ...allDefaultOpts }
-    : { ...incDefaultOpts };
-opts = { ...opts, ...receivedOpts };
+function optsToNumber(key, value) {
+  if (key !== 'mode') return Number(value);
+  return value;
+}
 
-console.log('opts', opts);
+let opts = {};
+Object.entries(receivedOpts).forEach(([key, value], index) => {
+  if (key !== 'args') {
+    opts[key] = optsToNumber(key, value);
+    if (value === true) opts[key] = optsToNumber(key, receivedOpts.args[index]);
+  }
+});
+
+opts = {
+  ...(opts.mode === modes.all ? allDefaultOpts : incDefaultOpts),
+  ...opts,
+};
+
+console.log('opts', opts, receivedOpts);
 
 // 运行入口
-// main();
+main();
 
 async function main() {
   if (!fs.existsSync(dir.base)) {
     fs.mkdirSync(dir.base, { recursive: true });
   }
   switch (opts.mode) {
-    case mode.all:
+    case modes.all:
+      console.log('mode: all');
       await mainFirstFull();
       break;
-    case mode.inc:
+    case modes.inc:
+      console.log('mode: inc');
       await mainIncrease();
       break;
     default:
@@ -138,7 +152,7 @@ async function doIt(beginVerIndex) {
   // 请求到静态的HTML文档
   const resp = await got(versionUrl);
   const $ = cheerio.load(resp.body);
-  const $titles = $('._1RuRku');
+  const $titles = $('.RefList-title');
   let $RefListItems = [];
   // 获取版本 li element
   $titles.each(function (i, elem) {
@@ -178,7 +192,7 @@ async function doIt(beginVerIndex) {
     JSON.stringify(versions, null, 2)
   );
 
-  // 开始寻找version对应的posiition
+  // 开始寻找version对应的position
   let verPosMap = {};
   const crawler = new Crawler({
     // 禁用注入jQuery选择器
