@@ -18,11 +18,11 @@ jobs:
       # - name: 'to test auto commit && copy data'
       #   run: 'node ./src/__tests__/testAutoCommit.js'
       - name: 'to get all position by version'
-        run: 'node ./src/getPositionByVersion.js -m all'
-      # - name: 'to get position-os list'
-      #   run: 'node ./src/getPositionWithOsList.js'
-      # - name: 'to generate final json (ver-pos-os, ver-pos-link'
-      #   run: 'node ./src/verPosOsGen'
+        run: 'node ./src/getPositionByVersion.js -m inc'
+      - name: 'to get position-os list'
+        run: 'node ./src/getPositionWithOsList.js'
+      - name: 'to generate final json (ver-pos-os, ver-pos-link'
+        run: 'node ./src/verPosOsGen'
       - name: commit version-position.json file to this repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
