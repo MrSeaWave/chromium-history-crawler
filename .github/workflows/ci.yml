@@ -38,6 +38,7 @@ jobs:
           source_folder: 'json'
           destination_repo: 'MrSeaWave/chromium-history-dataSource'
           destination_folder: 'json'
+          destination_branch: 'main'
           user_email: 'MrDaemon@outlook.com'
           user_name: 'MrSeaWave'
           commit_msg: 'feat: update JSON data'
