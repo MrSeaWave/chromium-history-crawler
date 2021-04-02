@@ -8,7 +8,7 @@
 
 ## Step_1
 
-寻找 Chromiunm 所有版本：`chromium_base_position` + [`versionUrl`](https://chromium.googlesource.com/chromium/src/+refs) && `versionPositionUrl`[https://omahaproxy.appspot.com/deps.json?version=] ====>生成 `all-version.json`, `version-position.json` 。
+寻找 Chromium 所有版本：`chromium_base_position` + [`versionUrl`](https://chromium.googlesource.com/chromium/src/+refs) && `versionPositionUrl`[https://omahaproxy.appspot.com/deps.json?version=] ====>生成 `all-version.json`, `version-position.json` 。
 
 ```bash
 node ./src/getPositionByVersion.js
