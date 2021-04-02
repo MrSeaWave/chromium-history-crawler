@@ -33,7 +33,7 @@ jobs:
       - name: 'Push JSON To dataSource repository'
         uses: crykn/copy_folder_to_another_repo_action@v1.0.6
         env:
-          API_TOKEN_GITHUB: ${{ secrets.COPY_TO_THIS_FOLDER_TOKEN_GITHUB }}
+          API_TOKEN_GITHUB: ${{ secrets.COPY_TO_OTHER_FOLDER_TOKEN_GITHUB }}
         with:
           source_folder: 'json'
           destination_repo: 'MrSeaWave/chromium-history-dataSource'
