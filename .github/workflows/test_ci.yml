@@ -16,7 +16,7 @@ jobs:
       - name: install
         run: npm install
       - name: 'echo Hello World!-----------'
-        run: 'echo 'Hello World!''
+        run: echo 'Hello World!'
       - name: 'print current path'
         run: 'pwd'
   frontend:
@@ -33,4 +33,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: 'print current path'
-        run: "pwd"
+        run: 'pwd'
