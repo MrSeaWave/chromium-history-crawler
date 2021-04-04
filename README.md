@@ -2,9 +2,12 @@
 
 获取谷歌浏览器历史数据
 
-仓库代码借鉴[chromium-history-version-crawler](https://github.com/vikyd/chromium-history-version-crawler)
+- 网页：https://mrseawave.github.io/chromium-history-page/
+- 网页源码：https://github.com/MrSeaWave/chromium-history-page
+- dataSource：https://github.com/MrSeaWave/chromium-history-dataSource
+- crawler(BASE): https://github.com/MrSeaWave/chromium-history-crawler
 
-数据保存地址：https://github.com/MrSeaWave/chromium-history-dataSource
+仓库代码借鉴[chromium-history-version-crawler](https://github.com/vikyd/chromium-history-version-crawler)
 
 ## Step_1
 
