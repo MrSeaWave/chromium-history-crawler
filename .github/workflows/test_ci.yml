@@ -1,0 +1,36 @@
+name: 'test -----> crawler and frontend'
+
+on:
+  push:
+    paths-ignore:
+      - 'json/version-position.json'
+    branches:
+      - feat-modifyCi
+jobs:
+  crawler:
+    name: 'crawler: to get dataSource'
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@main
+      - name: install
+        run: npm install
+      - name: 'echo 'Hello World!'-----------'
+        run: 'echo 'Hello World!''
+      - name: 'print current path'
+        run: 'pwd'
+  frontend:
+    name: publish frontend
+    needs: crawler
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: 'MrSeaWave/chromium-history-page'
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: 'print current path'
+        run: "pwd"
