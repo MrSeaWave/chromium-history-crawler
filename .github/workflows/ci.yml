@@ -1,4 +1,4 @@
-name: 'crawler and frontend'
+name: 'crawler and frontend 🚀'
 
 on:
   schedule:
@@ -44,3 +44,36 @@ jobs:
           user_email: 'MrDaemon@outlook.com'
           user_name: 'MrSeaWave'
           commit_msg: 'feat: update JSON data'
+      - name: 'Push JSON to frontend repository'
+        uses: crykn/copy_folder_to_another_repo_action@v1.0.6
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.COPY_TO_OTHER_FOLDER_TOKEN_GITHUB }}
+        with:
+          source_folder: 'json/ver-pos-os'
+          destination_repo: 'MrSeaWave/chromium-history-page'
+          destination_folder: 'public/json/ver-pos-os'
+          destination_branch: 'main'
+          user_email: 'MrDaemon@outlook.com'
+          user_name: 'MrSeaWave'
+          commit_msg: 'feat: update JSON data'
+  frontend:
+    name: Deploy 🚀
+    needs: crawler
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        with:
+          repository: MrSeaWave/chromium-history-page
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: In MrSeaWave/chromium-history-page To Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          token: ${{ secrets.DEPLOY_ANOTHER_TOKEN }}
+          repository-name: MrSeaWave/chromium-history-page
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
+          clean: true # Automatically remove deleted files from the deploy branch
