@@ -11,15 +11,20 @@
 
 ## Step_1
 
-寻找 Chromium 所有版本：`chromium_base_position` + [`versionUrl`](https://chromium.googlesource.com/chromium/src/+refs) && `versionPositionUrl`[https://omahaproxy.appspot.com/deps.json?version=] ====>生成 `all-version.json`, `version-position.json` 。
+寻找所有的 version&&version 对应的 position
 
-```bash
-node ./src/getPositionByVersion.js
+```bash getPositionByVersion
+$ node ./src/getPositionByVersion.js
 ```
+
+[`versionUrl`](https://chromium.googlesource.com/chromium/src/+refs) + [`versionPositionUrl`](https://omahaproxy.appspot.com/deps.json?version=])====>生成 `all-version.json`, `version-position.json`
+
+- `versionUrl` ：爬虫获取所有 version
+- `versionPositionUrl`: 通过指定的 version 获取特定的 position
 
 `all-version.json`:
 
-```json
+```json all-version.json
 [
   "90.0.4399.1",
   "90.0.4399.0",
@@ -31,7 +36,7 @@ node ./src/getPositionByVersion.js
 
 `version-position.json`:
 
-```json
+```json version-position.json
 {
   "90.0.4399.1": "846615",
   "90.0.4399.0": "846615",
@@ -43,15 +48,17 @@ node ./src/getPositionByVersion.js
 
 ## Step_2
 
-寻找关于 os 的 position：`position/position-Mac.json`...
+寻找不同 os 对应的 position：`position/position-Mac.json` etc.
 
-```bash
-node ./src/getPositionWithOsList.js
+```bash getPositionWithOsList
+$ node ./src/getPositionWithOsList.js
 ```
+
+[`positionUrl`](<https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o?delimiter=/&prefix=Mac/&fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken>)====>`position/position-Mac.json`
 
 `position-Mac.json`:
 
-```json
+```json position-Mac.json
 [
   "15734",
   "15749",
@@ -63,15 +70,17 @@ node ./src/getPositionWithOsList.js
 
 ## Step_3
 
-`version-position.json` && `position/position-os.json` ===> `version-position-Mac.json` etc.
+结合`step_1`与`step_2`的数据生成最终文件：`ver-pos-os/version-position-Mac.json`
 
-```bash
- node ./src/verPosOsGen
+```bash verPosOsGen.js
+$  node ./src/verPosOsGen
 ```
+
+`version-position.json` && `position/position-os.json` ===> `ver-pos-os/version-position-Mac.json` etc.
 
 `ver-pos-os.json`:
 
-```json
+```json ver-pos-os.json
 {
   "90.0.4398.1": "846545",
   "90.0.4398.0": "846545",
