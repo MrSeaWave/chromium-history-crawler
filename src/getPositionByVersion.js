@@ -299,4 +299,4 @@ async function doIt(beginVerIndex) {
   });
 }
 
-doIt();
+// doIt();
