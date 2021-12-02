@@ -12,11 +12,30 @@ jobs:
   crawler:
     name: 'crawler: to get dataSource'
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
       - name: checkout
         uses: actions/checkout@main
+      - name: Use Node.js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: global Yarn
+        run: npm install -g yarn
+      - name: Print Env
+        run: |
+        echo node
+        node -v
+        echo npm
+        npm -v
+        echo yarn
+        yarn -v
       - name: install
-        run: npm install
+        run: yarn install
       # - name: 'to test auto commit && copy data'
       #   run: 'node ./src/__tests__/testAutoCommit.js'
       - name: 'to get all position by version'
