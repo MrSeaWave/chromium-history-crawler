@@ -28,12 +28,12 @@ jobs:
         run: npm install -g yarn
       - name: Print Env
         run: |
-        echo node
-        node -v
-        echo npm
-        npm -v
-        echo yarn
-        yarn -v
+          echo node
+          node -v
+          echo npm
+          npm -v
+          echo yarn
+          yarn -v
       - name: install
         run: yarn install
       # - name: 'to test auto commit && copy data'
