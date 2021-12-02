@@ -28,11 +28,11 @@ jobs:
         run: npm install -g yarn
       - name: Print Env
         run: |
-          echo node
+          echo "node"
           node -v
-          echo npm
+          echo "npm"
           npm -v
-          echo yarn
+          echo "yarn"
           yarn -v
       - name: install
         run: yarn install
