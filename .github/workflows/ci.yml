@@ -20,14 +20,23 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@main
+
       - name: Use Node.js
-      - uses: actions/setup-node@v2
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: global Yarn
         run: npm install -g yarn
       - name: Print Env
-        run: node -v && npm -v && yarn -v
+        run: |
+          echo "node"
+          node -v
+          echo "npm"
+          npm -v
+          echo "yarn"
+          yarn -v
+          
       - name: install
         run: yarn install
       # - name: 'to test auto commit && copy data'
