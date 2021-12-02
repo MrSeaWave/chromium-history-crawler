@@ -36,7 +36,7 @@ jobs:
           npm -v
           echo "yarn"
           yarn -v
-          
+
       - name: install
         run: yarn install
       # - name: 'to test auto commit && copy data'
@@ -82,13 +82,35 @@ jobs:
     name: Deploy 🚀
     needs: crawler
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
       - name: Checkout
         uses: actions/checkout@main
         with:
           repository: MrSeaWave/chromium-history-page
-      - name: Install
-        run: npm install
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: global Yarn
+        run: npm install -g yarn
+      - name: Print Env
+        run: |
+          echo "node"
+          node -v
+          echo "npm"
+          npm -v
+          echo "yarn"
+          yarn -v
+
+      - name: install
+        run: yarn install
       - name: Build
         run: npm run build
       - name: In MrSeaWave/chromium-history-page To Deploy 🚀
