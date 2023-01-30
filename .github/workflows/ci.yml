@@ -2,7 +2,7 @@ name: 'crawler and frontend 🚀'
 
 on:
   schedule:
-    - cron: '0 0,4,8,12,16,20 * * *'
+    - cron: '0 0,8,20 * * *'
   push:
     paths-ignore:
       - 'json/version-position.json'
