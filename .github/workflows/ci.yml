@@ -2,8 +2,8 @@ name: 'crawler and frontend 🚀'
 
 on:
   schedule:
-#     - cron: '0 0,8,20 * * *'
-      - cron: '0 0,12 * * 6'
+    #     - cron: '0 0,8,20 * * *'
+    - cron: '0 0,12 * * 6'
   push:
     paths-ignore:
       - 'json/version-position.json'
@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [14.x]
 
     steps:
       - name: checkout
@@ -86,7 +86,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [14.x]
 
     steps:
       - name: Checkout
